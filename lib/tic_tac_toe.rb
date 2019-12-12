@@ -107,4 +107,7 @@ class TicTacToe
     #binding.pry
   end
   
+  def play
+    
+  end
 end
