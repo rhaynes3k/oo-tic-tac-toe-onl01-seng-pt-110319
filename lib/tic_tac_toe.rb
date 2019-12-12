@@ -1,3 +1,4 @@
+require 'pry'
 class TicTacToe
   
   WIN_COMBINATIONS =
@@ -78,7 +79,7 @@ class TicTacToe
   
   def won?
     WIN_COMBINATIONS.find do|w|
-    @board[w[0]] == @board[w[1]] && @board[w[1]] == @board[w[2]]
+    @board[w[0]] == @board[w[1]] && @board[w[1]] == @board[w[2]] && self.position_taken?(w[0])
     end
   end
   
@@ -87,9 +88,23 @@ class TicTacToe
   end
 
   def draw?
-    if self.won? == false && self.full?
-  
-    end
+    !self.won? && self.full?
   end
-  #binding.pry
+  
+  def over?
+    self.draw? || self.won?
+  end
+  
+  def winner
+    #binding.pry
+    if self.won?
+      @board[self.won?[0]]
+    else
+      nil
+      
+    end
+    
+    #binding.pry
+  end
+  
 end
